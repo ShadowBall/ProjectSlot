@@ -22,17 +22,12 @@ function spinSlot(){
     const xyz = [x,y,z]; //Consists of the three counters used for each slot column, which are incremented until their stopping point
     const Slot_Stop_Array = [Slot1_Stop,Slot2_Stop,Slot3_Stop];
     const slots = [slot1,slot2,slot3];  //Array needed for each slot column
-   	for (var i = 0; i<3; i++){
-		IntervalFun(i) //Set i value directly in the interval by using external function
+   	for (let i = 0; i<3; i++){
+		slots[i] = setInterval(function(){  //Speed of each function being called
+            spinslots(i);	
+    },50); 
 	}	
-	
-	function IntervalFun(this_i){					//Speed of each function being called
-		slots[this_i] = setInterval(function(){
-				spinslots(this_i);
-				console.log("i on externalfunction " + i);	
-		},50);
-	}
-	
+
 	function spinslots(k){			
         xyz[k]++;
         if(xyz[k]>=Slot_Stop_Array[k]){
